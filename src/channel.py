@@ -31,6 +31,8 @@ class Channel:
             json.dump(date,file)
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        # printj = json.dumps(channel, indent=2, ensure_ascii=False)
-        # print(printj)
+        youtube = self.get_service()
+        channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
+        printj = json.dumps(channel, indent=2, ensure_ascii=False)
+        print(printj)
         pass
